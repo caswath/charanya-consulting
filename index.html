@@ -1350,6 +1350,7 @@
   </div>
 </form>
 
+
              </div>
             </div>
           </div>
@@ -1370,8 +1371,11 @@
   </div>
 
 <script>
-  // Simple JS: current year
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // Simple JS: current year in footer
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   // Handle contact form submission via Formspree without leaving the page
   const form = document.getElementById("contact-form");
@@ -1379,7 +1383,7 @@
 
   if (form && statusEl) {
     form.addEventListener("submit", async function (event) {
-      event.preventDefault(); // stop the browser from navigating away
+      event.preventDefault(); // stop page from navigating away
       statusEl.textContent = "Sending your message...";
 
       const formData = new FormData(form);
@@ -1395,7 +1399,8 @@
 
         if (response.ok) {
           form.reset();
-          statusEl.textContent = "Thanks! Your message has been sent. I’ll get back to you soon.";
+          statusEl.textContent =
+            "Thanks! Your message has been sent. I’ll get back to you soon.";
         } else {
           statusEl.textContent =
             "Hmm, there was an issue submitting the form. Please email me directly at charanyasvs@gmail.com.";
@@ -1410,6 +1415,7 @@
 
 </body>
 </html>
+
 
 
 
