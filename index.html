@@ -1306,9 +1306,7 @@
 
             <div class="card">
               <div class="card-inner">
-                <form class="contact-form" action="https://formspree.io/f/xjknpoqq" method="POST">
-  <input type="hidden" name="_redirect" value="https://caswath.github.io/charanya-consulting/#contact">
-
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xjknpoqq" method="POST">
   <div class="field">
     <label for="name">Your name</label>
     <input id="name" name="name" type="text" placeholder="Jane Doe" required />
@@ -1343,7 +1341,7 @@
     <input id="timeline" name="timeline" type="text" placeholder="e.g., Need help in the next 2–4 weeks" />
   </div>
 
-  <p class="form-footnote">
+  <p class="form-footnote" id="form-status">
     By submitting this form, your message will be sent securely to my inbox via Formspree.
   </p>
 
@@ -1351,6 +1349,7 @@
     <button type="submit" class="btn-submit">Send inquiry →</button>
   </div>
 </form>
+
              </div>
             </div>
           </div>
@@ -1370,12 +1369,48 @@
     </footer>
   </div>
 
-  <script>
-    // Simple JS: current year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+  // Simple JS: current year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Handle contact form submission via Formspree without leaving the page
+  const form = document.getElementById("contact-form");
+  const statusEl = document.getElementById("form-status");
+
+  if (form && statusEl) {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault(); // stop the browser from navigating away
+      statusEl.textContent = "Sending your message...";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          form.reset();
+          statusEl.textContent = "Thanks! Your message has been sent. I’ll get back to you soon.";
+        } else {
+          statusEl.textContent =
+            "Hmm, there was an issue submitting the form. Please email me directly at charanyasvs@gmail.com.";
+        }
+      } catch (error) {
+        statusEl.textContent =
+          "Network error. Please email me directly at charanyasvs@gmail.com.";
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
+
 
 
 
