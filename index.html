@@ -1306,30 +1306,32 @@
 
             <div class="card">
               <div class="card-inner">
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks for your message! Please wire this form to your backend or an email service to make it fully functional.');">
+                <form class="contact-form" action="https://formspree.io/f/xjknpoqq" method="POST">
+                 <input type="hidden" name="_redirect" value="https://caswath.github.io/charanya-consulting/">
+
                   <div class="field">
                     <label for="name">Your name</label>
-                    <input id="name" type="text" placeholder="Jane Doe" required />
+                    <input id="name" name="name" type="text" placeholder="Jane Doe" required />
                   </div>
                   <div class="field">
                     <label for="company">Company / organization</label>
-                    <input id="company" type="text" placeholder="Company name or brief description" />
+                    <input id="company" name="company" type="text" placeholder="Company name or brief description" />
                   </div>
                   <div class="field">
                     <label for="role">Your role</label>
-                    <input id="role" type="text" placeholder="Founder, VP Product, Engineering lead, etc." />
+                    <input id="role" name="role" type="text" placeholder="Founder, VP Product, Engineering lead, etc." />
                   </div>
                   <div class="field">
                     <label for="email">Work email</label>
-                    <input id="email" type="email" placeholder="you@company.com" required />
+                    <input id="email" name="email" type="email" placeholder="you@company.com" required />
                   </div>
                   <div class="field">
                     <label for="challenge">What are you trying to solve?</label>
-                    <textarea id="challenge" placeholder="Briefly describe your customers, the business problem, and where you feel the gap is between business and tech."></textarea>
+                    <textarea id="challenge" name="challenge" placeholder="Briefly describe your customers, the business problem, and where you feel the gap is between business and tech."></textarea>
                   </div>
                   <div class="field">
                     <label for="timeline">Rough timeline</label>
-                    <input id="timeline" type="text" placeholder="e.g., Need help in the next 2–4 weeks" />
+                    <input id="timeline" name="timeline" type="text" placeholder="e.g., Need help in the next 2–4 weeks" />
                   </div>
                   <p class="form-footnote">
                     This form is for demonstration purposes only. To make it live, connect it to your preferred form or email handling service.
@@ -1363,3 +1365,4 @@
   </script>
 </body>
 </html>
+
